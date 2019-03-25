@@ -404,6 +404,14 @@ module.exports = (
           require.resolve('razzle-dev-utils/webpackHotDevClient'),
           paths.appClientIndexJs,
         ].filter(Boolean),
+        admin: [
+          // We ship a few polyfills by default but only include them if React is being placed in
+          // the default path. If you are doing some vendor bundling, you'll need to require the razzle/polyfills
+          // on your own.
+          !dotenv.raw.REACT_BUNDLE_PATH && require.resolve('./polyfills'),
+          require.resolve('razzle-dev-utils/webpackHotDevClient'),
+          paths.appAdminIndexJs,
+        ].filter(Boolean),
       };
 
       // Configure our client bundles output. Not the public path is to 3001.
@@ -412,7 +420,7 @@ module.exports = (
         publicPath: clientPublicPath,
         pathinfo: true,
         libraryTarget: 'var',
-        filename: 'static/js/bundle.js',
+        filename: 'static/js/bundle.[name].js',
         chunkFilename: 'static/js/[name].chunk.js',
         devtoolModuleFilenameTemplate: info =>
           path.resolve(info.resourcePath).replace(/\\/g, '/'),
@@ -480,6 +488,13 @@ module.exports = (
           !dotenv.raw.REACT_BUNDLE_PATH && require.resolve('./polyfills'),
           paths.appClientIndexJs,
         ].filter(Boolean),
+        admin: [
+          // We ship a few polyfills by default but only include them if React is being placed in
+          // the default path. If you are doing some vendor bundling, you'll need to require the razzle/polyfills
+          // on your own.
+          !dotenv.raw.REACT_BUNDLE_PATH && require.resolve('./polyfills'),
+          paths.appAdminIndexJs,
+        ].filter(Boolean),
       };
 
       // Specify the client output directory and paths. Notice that we have
@@ -488,7 +503,7 @@ module.exports = (
       config.output = {
         path: paths.appBuildPublic,
         publicPath: dotenv.raw.PUBLIC_PATH || '/',
-        filename: 'static/js/bundle.[chunkhash:8].js',
+        filename: 'static/js/bundle.[name].[chunkhash:8].js',
         chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
         libraryTarget: 'var',
       };

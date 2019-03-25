@@ -94,7 +94,7 @@ ${razzle.port !== '3000' && `PORT=${razzle.port}`}
   process.noDeprecation = true; // turns off that loadQuery clutter.
 
   console.log('Creating an optimized production build...');
-  console.log('Compiling client...');
+  console.log('Compiling admin & client...');
   // First compile the client. We need it to properly output assets.json (asset
   // manifest file with the correct hashes on file names BEFORE we can start
   // the server compiler.
@@ -124,7 +124,7 @@ ${razzle.port !== '3000' && `PORT=${razzle.port}`}
         return reject(new Error(clientMessages.warnings.join('\n\n')));
       }
 
-      console.log(chalk.green('Compiled client successfully.'));
+      console.log(chalk.green('Compiled admin & client successfully.'));
       console.log('Compiling server...');
       compile(serverConfig, (err, serverStats) => {
         if (err) {

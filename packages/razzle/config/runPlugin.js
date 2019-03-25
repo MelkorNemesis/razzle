@@ -17,9 +17,11 @@ function runPlugin(plugin, config, { target, dev }, webpack) {
 
   const completePluginName = `razzle-plugin-${plugin.name}`;
 
-  // Try to find the plugin in node_modules
-  const razzlePlugin = require(completePluginName);
-  if (!razzlePlugin) {
+  let razzlePlugin
+  try {
+    // Try to find the plugin in node_modules
+    razzlePlugin = require(completePluginName);
+  } catch (e) {
     throw new Error(`Unable to find '${completePluginName}`);
   }
 

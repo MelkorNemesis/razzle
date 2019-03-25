@@ -52,6 +52,7 @@ module.exports = {
   appPackageJson: resolveApp('package.json'),
   appServerIndexJs: resolveApp('src'),
   appClientIndexJs: resolveApp('src/client'),
+  appAdminIndexJs: resolveApp('src/admin'),
   testsSetup: resolveApp('src/setupTests.js'),
   appBabelRc: resolveApp('.babelrc'),
   appEslintRc: resolveApp('.eslintrc'),
