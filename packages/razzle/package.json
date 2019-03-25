@@ -1,9 +1,9 @@
 {
-  "name": "@melkor/razzle",
+  "name": "melkornms-razzle",
   "version": "2.4.1",
-  "description": "Create server-rendered universal JavaScript applications with no configuration",
-  "repository": "git@github.com:jaredpalmer/razzle.git",
-  "author": "Jared Palmer <jared@palmer.net>",
+  "description": "Create server-rendered universal JavaScript applications with no configuration. Modified to allow another entrypoint admin.js.",
+  "repository": "https://github.com/MelkorNemesis/razzle",
+  "author": "Michal Ševčík <sevcik.mi@gmail.com>, Jared Palmer <jared@palmer.net>",
   "license": "MIT",
   "bin": {
     "razzle": "./bin/razzle.js"
